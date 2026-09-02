@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="16" stylesheets="@../css/style.css" styleClass="root-pane"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaultdesk.controller.LoginController">
+    <padding><Insets top="60" right="60" bottom="60" left="60"/></padding>
+
+    <Text styleClass="app-title" text="🛡 VaultDesk"/>
+    <Text styleClass="app-subtitle" text="Your Personal Digital Security Platform"/>
+
+    <VBox spacing="10" maxWidth="320" styleClass="card">
+        <Label text="Username"/>
+        <TextField fx:id="usernameField" promptText="Enter username"/>
+
+        <Label text="Master Password"/>
+        <PasswordField fx:id="passwordField" promptText="Enter master password"/>
+
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+
+        <Button text="Unlock Vault" onAction="#handleLogin" styleClass="primary-button" maxWidth="Infinity"/>
+        <Button text="Create an account" onAction="#goToRegister" styleClass="link-button" maxWidth="Infinity"/>
+        <Separator/>
+        <Button text="Restore from Backup..." onAction="#handleRestoreBackup" styleClass="link-button" maxWidth="Infinity"/>
+    </VBox>
+</VBox>

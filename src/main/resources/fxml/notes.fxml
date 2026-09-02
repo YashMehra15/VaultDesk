@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox spacing="16" stylesheets="@../css/style.css" styleClass="tab-content"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaultdesk.controller.NotesController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox spacing="10" prefWidth="270">
+        <TextField fx:id="searchField" promptText="🔍 Search, tag:x, category:x" onKeyReleased="#handleSearch"/>
+        <ListView fx:id="notesListView" VBox.vgrow="ALWAYS"/>
+        <Button text="🗑 Delete Selected" onAction="#handleDelete" styleClass="danger-button" maxWidth="Infinity"/>
+    </VBox>
+
+    <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="card">
+        <Label styleClass="section-title" text="Note"/>
+        <TextField fx:id="titleField" promptText="Title"/>
+        <ComboBox fx:id="categoryBox" promptText="Category" editable="true"/>
+        <TextField fx:id="tagsField" promptText="Tags, comma separated (e.g. college, important)"/>
+        <TextArea fx:id="contentArea" promptText="Encrypted secure note content..." VBox.vgrow="ALWAYS" wrapText="true"/>
+        <HBox spacing="8">
+            <Button text="💾 Save Note" onAction="#handleSave" styleClass="primary-button"/>
+            <Button text="New" onAction="#handleNew" styleClass="link-button"/>
+        </HBox>
+        <Label fx:id="statusLabel" wrapText="true"/>
+    </VBox>
+</HBox>

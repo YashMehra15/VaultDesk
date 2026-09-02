@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12" stylesheets="@../css/style.css" styleClass="tab-content"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaultdesk.controller.TrashController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label styleClass="section-title" text="🗑 Trash — Recently Deleted"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Refresh" onAction="#handleRefresh" styleClass="secondary-button"/>
+    </HBox>
+    <Label text="Items stay here until permanently deleted. Restore brings them back to their original tab." wrapText="true"/>
+
+    <TableView fx:id="trashTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="titleColumn" text="Title" prefWidth="220"/>
+            <TableColumn fx:id="typeColumn" text="Type" prefWidth="120"/>
+            <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120"/>
+            <TableColumn fx:id="deletedAtColumn" text="Deleted On" prefWidth="160"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="8">
+        <Button text="↩ Restore" onAction="#handleRestore" styleClass="primary-button"/>
+        <Button text="🗑 Delete Forever" onAction="#handlePermanentDelete" styleClass="danger-button"/>
+    </HBox>
+    <Label fx:id="statusLabel" wrapText="true"/>
+</VBox>

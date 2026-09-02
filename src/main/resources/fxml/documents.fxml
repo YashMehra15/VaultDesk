@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox spacing="16" stylesheets="@../css/style.css" styleClass="tab-content"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaultdesk.controller.DocumentController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox spacing="10" HBox.hgrow="ALWAYS" prefWidth="500">
+        <TableView fx:id="documentTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="fileNameColumn" text="Document Name" prefWidth="200"/>
+                <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120"/>
+                <TableColumn fx:id="addedOnColumn" text="Added On" prefWidth="130"/>
+            </columns>
+        </TableView>
+        <HBox spacing="8">
+            <Button text="📂 Open" onAction="#handleOpen"/>
+            <Button text="🔍 Verify Integrity" onAction="#handleVerify"/>
+            <Button text="🗑 Delete" onAction="#handleDelete" styleClass="danger-button"/>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="10" styleClass="card" prefWidth="320">
+        <Label styleClass="section-title" text="+ Add Document"/>
+        <TextField fx:id="titleField" promptText="Document title"/>
+        <ComboBox fx:id="categoryBox" promptText="Category" editable="true"/>
+
+        <Button text="📎 Choose PDF or Image..." onAction="#handleChooseFile" styleClass="secondary-button" maxWidth="Infinity"/>
+        <Label fx:id="chosenFileLabel" text="No file selected" wrapText="true"/>
+
+        <Separator/>
+        <Button text="💾 Save Document" onAction="#handleSave" styleClass="primary-button" maxWidth="Infinity"/>
+        <Button text="Clear Form" onAction="#handleClear" styleClass="link-button" maxWidth="Infinity"/>
+        <Label fx:id="statusLabel" wrapText="true"/>
+    </VBox>
+</HBox>

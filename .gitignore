@@ -1,0 +1,21 @@
+# Maven build output
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Packaged installers/output (rebuild these locally instead of committing binaries)
+dist/
+
+# Local vault database and stored documents - never commit personal vault data
+*.db
+*.vlt

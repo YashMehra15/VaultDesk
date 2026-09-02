@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="16" stylesheets="@../css/style.css" styleClass="root-pane"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaultdesk.controller.MfaVerifyController">
+    <padding><Insets top="60" right="60" bottom="60" left="60"/></padding>
+
+    <Text styleClass="app-title" text="🔐 Two-Factor Check"/>
+    <Text styleClass="app-subtitle" text="Enter the 6-digit code from your authenticator app"/>
+
+    <VBox spacing="10" maxWidth="320" styleClass="card">
+        <Label text="Authentication Code"/>
+        <TextField fx:id="codeField" promptText="123456"/>
+
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+
+        <Button text="Verify &amp; Continue" onAction="#handleVerify" styleClass="primary-button" maxWidth="Infinity"/>
+        <Button text="Cancel" onAction="#handleCancel" styleClass="link-button" maxWidth="Infinity"/>
+    </VBox>
+</VBox>

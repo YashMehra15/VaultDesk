@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12" stylesheets="@../css/style.css" styleClass="tab-content"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaultdesk.controller.SecurityLogController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label styleClass="section-title" text="🚨 Security Events"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Refresh" onAction="#handleRefresh" styleClass="secondary-button"/>
+    </HBox>
+
+    <TableView fx:id="eventTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="eventColumn" text="Event" prefWidth="380"/>
+            <TableColumn fx:id="timestampColumn" text="Time" prefWidth="180"/>
+        </columns>
+    </TableView>
+</VBox>

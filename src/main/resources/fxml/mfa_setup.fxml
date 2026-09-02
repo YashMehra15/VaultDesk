@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="16" stylesheets="@../css/style.css" styleClass="tab-content"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaultdesk.controller.MfaSetupController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label styleClass="section-title" text="🔐 Multi-Factor Authentication"/>
+    <Label fx:id="statusLabel" text="Checking status..."/>
+
+    <VBox fx:id="disabledPane" spacing="12" styleClass="card" maxWidth="420">
+        <Label text="Add a second layer of protection: after your master password, you'll also need a 6-digit code from an authenticator app (Google Authenticator, Authy, etc.)." wrapText="true"/>
+        <Button text="Enable MFA" onAction="#handleStartSetup" styleClass="primary-button"/>
+    </VBox>
+
+    <VBox fx:id="setupPane" spacing="12" styleClass="card" maxWidth="420" visible="false" managed="false">
+        <Label text="1. Open your authenticator app and choose 'Enter a setup key manually' (or similar)." wrapText="true"/>
+        <Label text="2. Enter this key as a Time-based (TOTP) key:" wrapText="true"/>
+        <Label fx:id="secretLabel" styleClass="security-score" style="-fx-font-size: 16px;" wrapText="true"/>
+        <Label text="3. Enter the 6-digit code it generates below to confirm:" wrapText="true"/>
+        <TextField fx:id="confirmCodeField" promptText="123456"/>
+        <Label fx:id="messageLabel" styleClass="error-label" wrapText="true"/>
+        <HBox spacing="8">
+            <Button text="Confirm &amp; Enable" onAction="#handleConfirmEnable" styleClass="primary-button"/>
+            <Button text="Cancel" onAction="#handleCancelSetup" styleClass="link-button"/>
+        </HBox>
+    </VBox>
+
+    <VBox fx:id="enabledPane" spacing="12" styleClass="card" maxWidth="420" visible="false" managed="false">
+        <Label text="MFA is protecting this account. Disabling it requires your current code, as a safety check." wrapText="true"/>
+        <TextField fx:id="disableCodeField" promptText="Current 6-digit code"/>
+        <Label fx:id="disableMessageLabel" styleClass="error-label" wrapText="true"/>
+        <Button text="Disable MFA" onAction="#handleDisable" styleClass="danger-button"/>
+    </VBox>
+</VBox>

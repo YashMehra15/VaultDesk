@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane stylesheets="@../css/style.css" styleClass="root-pane"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.vaultdesk.controller.DashboardController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12" styleClass="top-bar">
+            <padding><Insets top="12" right="20" bottom="12" left="20"/></padding>
+            <Text styleClass="app-title-small" text="🛡 VAULTDESK"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel" text="Welcome back"/>
+            <Label fx:id="lockCountdownLabel" styleClass="countdown-label"/>
+            <Button text="🔒 Logout" onAction="#handleLogout" styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE">
+            <Tab fx:id="overviewTab" text="🏠 Overview">
+                <VBox spacing="16" styleClass="tab-content">
+                    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                    <HBox spacing="16">
+                        <VBox styleClass="stat-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                            <Label styleClass="stat-number" fx:id="passwordCountLabel" text="0"/>
+                            <Label text="🔑 Passwords"/>
+                        </VBox>
+                        <VBox styleClass="stat-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                            <Label styleClass="stat-number" fx:id="noteCountLabel" text="0"/>
+                            <Label text="📝 Notes"/>
+                        </VBox>
+                        <VBox styleClass="stat-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                            <Label styleClass="stat-number" fx:id="documentCountLabel" text="0"/>
+                            <Label text="📄 Documents"/>
+                        </VBox>
+                    </HBox>
+
+                    <VBox styleClass="card" spacing="8">
+                        <Label styleClass="section-title" text="📊 Security Score"/>
+                        <Label fx:id="securityScoreLabel" styleClass="security-score" text="--%"/>
+                        <ProgressBar fx:id="securityScoreBar" prefWidth="Infinity"/>
+                        <Label fx:id="strongLabel" text="Strong Passwords: --"/>
+                        <Label fx:id="reusedLabel" text="Reused Passwords: --"/>
+                        <Label fx:id="oldLabel" text="Old Passwords: --"/>
+                        <Label fx:id="weakLabel" text="Weak Passwords: --"/>
+                        <Button text="Refresh Score" onAction="#refreshSecurityScore" styleClass="secondary-button"/>
+                    </VBox>
+
+                    <VBox styleClass="card" spacing="8">
+                        <Label styleClass="section-title" text="💾 Backup &amp; Restore"/>
+                        <Label text="Backups are encrypted the same way as your live vault - each field stays sealed with your master password, so the file is safe to store or move to another PC." wrapText="true"/>
+                        <HBox spacing="8">
+                            <Button text="Backup Vault Now" onAction="#handleBackup" styleClass="primary-button"/>
+                            <Button text="Restore From Backup..." onAction="#handleRestore" styleClass="secondary-button"/>
+                        </HBox>
+                        <Label fx:id="backupStatusLabel" wrapText="true"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+
+            <Tab text="🔑 Passwords">
+                <fx:include fx:id="passwordsTab" source="passwords.fxml"/>
+            </Tab>
+
+            <Tab text="📝 Secure Notes">
+                <fx:include fx:id="notesTab" source="notes.fxml"/>
+            </Tab>
+
+            <Tab text="📄 Documents">
+                <fx:include fx:id="documentsTab" source="documents.fxml"/>
+            </Tab>
+
+            <Tab text="🗑 Trash">
+                <fx:include fx:id="trashInclude" source="trash.fxml"/>
+            </Tab>
+
+            <Tab text="🔐 MFA Setup">
+                <fx:include fx:id="mfaSetupInclude" source="mfa_setup.fxml"/>
+            </Tab>
+
+            <Tab text="🚨 Security Log">
+                <fx:include fx:id="securityLogInclude" source="security_log.fxml"/>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
