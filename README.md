@@ -76,6 +76,16 @@ jpackage --type app-image --name VaultDesk --input target ^
 
 ---
 
+
+## 🚀 Download VaultDesk
+
+Download the latest Windows release here:
+
+[![Download VaultDesk](https://img.shields.io/badge/Download-VaultDesk-blue?style=for-the-badge&logo=windows)](https://github.com/YashMehra15/VaultDesk/releases/latest)
+
+**Version:** 2.0.0  
+**Platform:** Windows 64-bit
+
 ## 🎯 Purpose
 This project demonstrates a complete desktop security platform — covering authentication design, applied cryptography, multi-factor authentication, secure file handling, and clean layered architecture (MVC/DAO/Service) using Java and JavaFX.
 
